@@ -1,0 +1,51 @@
+{
+  "name": "@tik-choco/mistvault",
+  "version": "0.1.0",
+  "description": "Browser-encrypted distributed vaults with portable transport and optional Preact controls.",
+  "type": "module",
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tik-choco-lab/mistvault.git"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./preact": {
+      "types": "./dist/preact/index.d.ts",
+      "default": "./dist/preact/index.js"
+    },
+    "./ui.css": "./dist/preact/ui.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.ja.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node -e \"require('fs').copyFileSync('src/preact/ui.css','dist/preact/ui.css')\"",
+    "test": "vitest run --pool=threads --maxWorkers=1",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@tik-choco/mistai": "github:tik-choco-lab/mistai",
+    "happy-dom": "^21.0.4",
+    "preact": "^10.29.1",
+    "typescript": "~6.0.2",
+    "vitest": "^4.0.0"
+  },
+  "peerDependencies": {
+    "preact": "^10.0.0"
+  },
+  "peerDependenciesMeta": {
+    "preact": {
+      "optional": true
+    }
+  }
+}
